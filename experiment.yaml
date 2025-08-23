@@ -1,0 +1,88 @@
+seed: 1337
+n_seeds: 3
+device: cuda:0
+deterministic: true
+data:
+  dataset_version: pcam_v1
+  splits_file: splits/patient_level_fold0.json
+  img_size: 128
+  normalize:
+    mean:
+    - 0.485
+    - 0.456
+    - 0.406
+    std:
+    - 0.229
+    - 0.224
+    - 0.225
+  decode: pillow_rgb
+  stain_norm: none
+  augment:
+    train:
+    - hflip: 0.5
+    - vflip: 0.5
+    - color_jitter:
+        b: 0.2
+        c: 0.2
+        s: 0.2
+    - blur:
+        p: 0.2
+        k: 3
+    val: []
+  sampler: random
+  samples_per_epoch: null
+loader:
+  batch_size: 64
+  grad_accum: 1
+  num_workers: 4
+  pin_memory: true
+  persistent_workers: true
+model:
+  backbone: densenet121
+  weights: imagenet_v1
+  precision: fp32
+  dropout: 0.0
+  freeze_backbone: false
+objective:
+  loss: bce_logits
+  pos_weight: null
+  label_smoothing: 0.0
+  focal:
+    enable: false
+    alpha: 0.25
+    gamma: 2.0
+  clip_grad_norm: null
+  calibration:
+    enable: false
+  decision_threshold: 0.5
+  tta:
+    enable: false
+optim:
+  name: adamw
+  lr: 0.0003
+  weight_decay: 0.0001
+  betas:
+  - 0.9
+  - 0.999
+  schedule: cosine
+  t_max: 30
+  warmup_steps: 0
+  epochs: 10
+  ema:
+    enable: false
+    decay: 0.999
+eval:
+  metrics:
+  - roc_auc
+  - pr_auc
+  - acc
+  - f1
+  ci_bootstrap: 2000
+  select_best_by: roc_auc
+  eval_every: epoch
+env:
+  torch: 2.3.1
+  torchvision: 0.18.1
+  cuda: '12.1'
+  cudnn_deterministic: true
+  cublas_workspace: :4096:8
