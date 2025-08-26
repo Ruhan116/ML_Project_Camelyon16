@@ -1,0 +1,17 @@
+{
+  "test_loss": 0.7138153125997633,
+  "roc_auc": 0.46479434808687514,
+  "pr_auc": 0.4780041817468794,
+  "accuracy": 0.49981689453125,
+  "f1_score": 0.66649031417874,
+  "sensitivity": 1.0,
+  "specificity": 6.1009090354462815e-05,
+  "precision": 0.499801629688406,
+  "negative_predictive_value": 1.0,
+  "true_negatives": 1,
+  "false_positives": 16390,
+  "false_negatives": 0,
+  "true_positives": 16377,
+  "decision_threshold": 0.5,
+  "evaluation_time_seconds": 20.211223602294922
+}
