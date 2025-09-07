@@ -1,0 +1,22 @@
+{
+  "dataset": "Camelyon17-WILDS (filtered, centers 2-4)",
+  "model": "CBAM+DenseNet121 (trained on PatchCamelyon)",
+  "test_samples": 85054,
+  "test_loss": 0.08645724124193692,
+  "roc_auc": 0.9957800284628577,
+  "pr_auc": 0.9964266809656532,
+  "accuracy": 0.9766030992075623,
+  "f1_score": 0.9763517528223411,
+  "sensitivity": 0.9659745573400428,
+  "specificity": 0.9872316410750818,
+  "precision": 0.9869543281358865,
+  "negative_predictive_value": 0.9666827841864106,
+  "confusion_matrix": {
+    "true_negatives": 41984,
+    "false_positives": 543,
+    "false_negatives": 1447,
+    "true_positives": 41080
+  },
+  "decision_threshold": 0.5,
+  "evaluation_time_seconds": 74.78756904602051
+}
